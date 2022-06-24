@@ -2,25 +2,26 @@
 
 The repository contains details and Stan programs for the analysis of clinical data, accompanying the paper "".
 
-##Analysis of FST
+## Analysis of FST
 
 FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$ (success = 1 or fail = 0) can be modeled with a Bernoulli distribution with probability to answer correctly $θ_i$. 
 
-$$y_i~ Bernoulli(θ_i )$$
+$$y_i \sim Bernoulli(θ_i )$$
 
 We used logistic regression to estimate the effect of parameters on the probability of response $θ_i$. In addition to the conventional logistic regression, we implemented a ‘guessing’ parameter α_eye for robustness, as responses were sometimes seemingly random (Reference: Doing Bayesian Data Analysis (3rd Edition), Chapter 21- John K. Kruschke). The probability of responding correctly is therefor given by a completely random process (probability = 0.5), and the logistic regression part with $α_eye$ representing the fraction of ‘guessing’ (0≤α_eye≤1).
 
-$$θ_i=1/2 α_pat+(1-α_pat )logistic(μ_i )$$
+$$θ_i=\frac{1}/{2} \alpha_pat+(1-\alpha_pat )logistic(\mu_i )$$
 
 For the ‘guessing’ parameter α we used a broad prior which gives values over 0.5 very low but non-zero probability.
 
-$$α_eye~Beta(1,9)$$
+$$α_eye \sim Beta(1,9)$$
 
 For the logistic regression, we used light intensity ($x_i$), patient ($\beta_pat$), eye ($\beta_eye$), and light color ($\beta_clr$) as predictors. Since we were interested in characteristic responses to particular combinations of eye and light color, we included an interactions term between eye and light color ($\beta_eyeXclr$). This allowed us to estimate the overall trends for patient, eye, color, taking into account the hierarchical structure of the data. A sum-to-zero constraint ($\Sigma\beta_k=0$,for $k=pat,eye,clr,eyeXclr$) was imposed on these predictors, and posteriors shown as offsets from the overall mean ($\beta_0).
 
 $$\mu_i=\beta_0+\beta_{pat,i}+\beta_{eye,i}+\beta_{clr,i}+\beta_{eyeXclr,i}+\beta x_i$$
 
-For β_pat, β_eye, β_eyeXclr we used full Bayesian inference with a Gamma(1.64,0.32) for hyperpriors which has a mean of 2 and standard deviation of 4, covering all likely values in log odds scale.
+For $\beta_pat$, $\beta_eye$, $\beta_eyeXclr$ we used full Bayesian inference with a $Gamma(1.64,0.32)$ for hyperpriors which has a mean of 2 and standard deviation of 4, covering all likely values in log odds scale.
+
 β_k^ ~Normal(0,σ_k )  
 σ_k~Gamma(1.64,0.32),     for k=pat,eye,eyeXclr 
 As there are only four colors, we used an informative half-t prior for the effect of color 
