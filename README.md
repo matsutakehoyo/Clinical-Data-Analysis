@@ -31,7 +31,8 @@ As there are only four colors, we used an informative half-t prior for the effec
 
 $$\beta_{clr}~Student(3,0,1)
 
-Analysis of chromatic pupillometry
+## Analysis of chromatic pupillometry
+
 Chromatic pupillometry measurements consist of five consecutive time series measurements of pupil diameter changes to light exposures aimed at stimulating rods, cones (two conditions), or melanopsin. For the melanopsin stimulation, pupil changes of the first repeat was clearly different from the rest of the successive measurements, and we therefore separated these measurements to mela1 (repeat 1) and mela2 (repeats 2-5). The time series measurements were condensed into three key regions: before (mean value before light exposure, 0 – 200 ms), peak (peak value after light exposure, 200 – 2000 ms), and after (mean value of steady state after light exposure, 3000-6000 ms). The peak region was only defined for rod/cone stimulation as we do not expect, nor observed, a transient response for melanopsin stimulation. Measurements sometimes contained regions where the standard deviation was zero. These regions with constant values were excluded from the analysis as they represent areas where pupil detection failed. Before, peak, and after values were analyzed using a multivariate regression, using multivariate student-t distribution for robustness. 
 [x_(beore,i),x_(peak,i),x_(after,i) ]=t_ν (μ_(before,i),μ_(peak,i),μ_(after,i),Σ_clr)
 Patient, eye, and color were considered as predictors, as well as the interaction between eye and color, with broad hyperpriors. A sum-to-zero constraint (Σβ=0,for pat,eye,clr,eyeXclr) was imposed on predictor, and posteriors are shown as offsets from the overall mean (β_0).
@@ -44,7 +45,8 @@ As “peak” is not defined for mela1 and mela2, correlation coefficients were 
 L_clr~LKJ(2)
 For the degrees of freedom ν we used the Gamma(2,0.1) prior recommended by the Stan development team.
 
-Analysis of correlation 
+## Analysis of correlation 
+
 Association between features (sex, age, EPT, logMAR, Retina thickness, FST and chromatic pupillometry measurements) was examined with a Bayesian counterpart of Pearson’s correlation test by estimating the correlation coefficient of a multivariate distribution. We implemented our model with a multivariate t-distribution, instead of a multi normal distribution for robustness against outliers. A latent state was assumed to take into account the uncertainty for measurements where mean and standard deviation were available (retina thickness, FST, and chromatic pupillometry). For FST and chromatic pupillometry data, the posterior estimates (mean and standard deviation) of the respective analyses were used as data. For missing data, i.e. missing components of the multivariate outcome, we modeled the marginal distribution of the component that is observed. Finally, for EPT measurements data contained censored values (right-censored at 2.5mA). These measurements were incorporated as parameters constrained to values in the censored range (>2.5mA). 
 x ⃗_i  ~ t_ν (μ ⃗,Σ )
 Σ=diag(σ ⃗ )×Ω× diag(σ ⃗ )
