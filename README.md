@@ -1,5 +1,7 @@
 # Clinical-Data-Analysis
 
+When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are 
+
 The repository contains details and Stan programs for the analysis of clinical data, accompanying the paper **Clinical Diagnosys**.
 
 ## Analysis of FST
