@@ -4,7 +4,7 @@ The repository contains details and Stan programs for the analysis of clinical d
 
 ## Analysis of FST
 
-FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$  (success = 1 or fail = 0) can be modeled with a Bernoulli distribution with probability to answer correctly $θ_i$. 
+FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$  (success = 1 or fail = 0) can be modeled with a Bernoulli distribution with probability to answer correctly. 
 
 $$y_i \sim Bernoulli(\theta_i)$$
 
@@ -16,16 +16,20 @@ For the ‘guessing’ parameter α we used a broad prior which gives values ove
 
 $$α_eye \sim Beta(1,9)$$
 
-For the logistic regression, we used light intensity ($x_i$), patient ($\beta_pat$), eye ($\beta_eye$), and light color ($\beta_clr$) as predictors. Since we were interested in characteristic responses to particular combinations of eye and light color, we included an interactions term between eye and light color ($\beta_eyeXclr$). This allowed us to estimate the overall trends for patient, eye, color, taking into account the hierarchical structure of the data. A sum-to-zero constraint ($\Sigma\beta_k=0$,for $k=pat,eye,clr,eyeXclr$) was imposed on these predictors, and posteriors shown as offsets from the overall mean ($\beta_0).
+For the logistic regression, we used light intensity ($x_i$), patient ($\beta_{pat}$), eye ($\beta_{eye}$), and light color ($\beta_{clr}$) as predictors. Since we were interested in characteristic responses to particular combinations of eye and light color, we included an interactions term between eye and light color ($\beta_{eyeXclr}$). This allowed us to estimate the overall trends for patient, eye, color, taking into account the hierarchical structure of the data. A sum-to-zero constraint ($\Sigma\beta_k=0$,for $k=pat,eye,clr,eyeXclr$) was imposed on these predictors, and posteriors shown as offsets from the overall mean ($\beta_0).
 
 $$\mu_i=\beta_0+\beta_{pat,i}+\beta_{eye,i}+\beta_{clr,i}+\beta_{eyeXclr,i}+\beta x_i$$
 
-For $\beta_pat$, $\beta_eye$, $\beta_eyeXclr$ we used full Bayesian inference with a $Gamma(1.64,0.32)$ for hyperpriors which has a mean of 2 and standard deviation of 4, covering all likely values in log odds scale.
+For $\beta_{pat}$, $\beta_{eye}$, $\beta_{eyeXclr}$ we used full Bayesian inference with a $Gamma(1.64,0.32)$ for hyperpriors which has a mean of 2 and standard deviation of 4, covering all likely values in log odds scale.
 
-β_k^ ~Normal(0,σ_k )  
-σ_k~Gamma(1.64,0.32),     for k=pat,eye,eyeXclr 
+$$
+\beta \sim Normal(0, \sigma_k) \\
+\sigma_k ~sim Gamma(1.64, 0.32), for k = pat, eye, eyeXclr \\
+$$
+
 As there are only four colors, we used an informative half-t prior for the effect of color 
-β_clr~Student(3,0,1)
+
+$$\beta_{clr}~Student(3,0,1)
 
 Analysis of chromatic pupillometry
 Chromatic pupillometry measurements consist of five consecutive time series measurements of pupil diameter changes to light exposures aimed at stimulating rods, cones (two conditions), or melanopsin. For the melanopsin stimulation, pupil changes of the first repeat was clearly different from the rest of the successive measurements, and we therefore separated these measurements to mela1 (repeat 1) and mela2 (repeats 2-5). The time series measurements were condensed into three key regions: before (mean value before light exposure, 0 – 200 ms), peak (peak value after light exposure, 200 – 2000 ms), and after (mean value of steady state after light exposure, 3000-6000 ms). The peak region was only defined for rod/cone stimulation as we do not expect, nor observed, a transient response for melanopsin stimulation. Measurements sometimes contained regions where the standard deviation was zero. These regions with constant values were excluded from the analysis as they represent areas where pupil detection failed. Before, peak, and after values were analyzed using a multivariate regression, using multivariate student-t distribution for robustness. 
