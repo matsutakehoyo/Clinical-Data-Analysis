@@ -4,9 +4,9 @@ The repository contains details and Stan programs for the analysis of clinical d
 
 ## Analysis of FST
 
-FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$ (success = 1 or fail = 0) can be modeled with a Bernoulli distribution with probability to answer correctly $θ_i$. 
+FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$ (success = 1 or fail = 0) can be modeled with a Bernoulli distribution with probability to answer correctly $\theta_i$. 
 
-$$y_i \sim Bernoulli(θ_i )$$
+$$y_i \sim Bernoulli(\theta_i)$$
 
 We used logistic regression to estimate the effect of parameters on the probability of response $θ_i$. In addition to the conventional logistic regression, we implemented a ‘guessing’ parameter α_eye for robustness, as responses were sometimes seemingly random (Reference: Doing Bayesian Data Analysis (3rd Edition), Chapter 21- John K. Kruschke). The probability of responding correctly is therefor given by a completely random process (probability = 0.5), and the logistic regression part with $α_eye$ representing the fraction of ‘guessing’ (0≤α_eye≤1).
 
