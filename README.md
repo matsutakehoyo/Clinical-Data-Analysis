@@ -10,7 +10,7 @@ $$y_i \sim Bernoulli(θ_i )$$
 
 We used logistic regression to estimate the effect of parameters on the probability of response $θ_i$. In addition to the conventional logistic regression, we implemented a ‘guessing’ parameter α_eye for robustness, as responses were sometimes seemingly random (Reference: Doing Bayesian Data Analysis (3rd Edition), Chapter 21- John K. Kruschke). The probability of responding correctly is therefor given by a completely random process (probability = 0.5), and the logistic regression part with $α_eye$ representing the fraction of ‘guessing’ (0≤α_eye≤1).
 
-$$θ_i=\frac{1}/{2} \alpha_pat+(1-\alpha_pat )logistic(\mu_i )$$
+$$θ_i=\frac{1}/{2} \alpha_{pat}+(1-\alpha_{pat} )logistic(\mu_i )$$
 
 For the ‘guessing’ parameter α we used a broad prior which gives values over 0.5 very low but non-zero probability.
 
