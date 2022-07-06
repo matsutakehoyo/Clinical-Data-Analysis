@@ -67,4 +67,14 @@ $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
 ## Quadratic Regression
 
+A regression analysis was performed to investigate the relationship between FST values (for example Blue vs Red). While FST values exhibit an overall linear trend, the Blue and Red FST values could not be satisfactorily accomodated with a linear relationship, as red values deviated more at lower thresholds. We therefore use a quadratic regression model. This is also more physiologically consistent as we expect Blue FST to be smaller than Blue. We use the mean and sd of the threshold values calculated from the FST analysis.
+
+Measurement error model using the posterior distributions from the FST analysis.
+$$ \mu_i = b_{0,clr} + b_{1,clr} * x_{lat,i} + b_{2,clr} * (x_{lat,i})^2; $$
+$$ y_i \sim Normal(\mu_i, \sigma_{clr}) $$
+$$ b_0 \sim Normal(0,100) $$
+$$ b_1 \sim Normal(0,100) $$
+$$ b_2 \sim Normal(0,10) $$
+$$ \sigma ~ Normal(0,100) $$  
+$$ \x_{lat} ~ Normal(0, 50) $$
 
