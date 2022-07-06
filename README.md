@@ -24,7 +24,7 @@ For $\beta_{pat}$, $\beta_{eye}$, $\beta_{eyeXclr}$ we used full Bayesian infere
 
 $$
 \beta \sim Normal(0, \sigma_k) \\
-\sigma_k ~sim Gamma(1.64, 0.32), for k = pat, eye, eyeXclr \\
+\sigma_k \sim Gamma(1.64, 0.32), for k = pat, eye, eyeXclr \\
 $$
 
 As there are only four colors, we used an informative half-t prior for the effect of color 
@@ -39,12 +39,12 @@ $$[x_{beore,i},x_{peak,i},x_{after,i} ] = t_{\nu} (μ_{before,i},μ_{peak,i},μ_
 
 Patient, eye, and color were considered as predictors, as well as the interaction between eye and color, with broad hyperpriors. A sum-to-zero constraint ($\Sigma\beta=0$,for pat,eye,clr,eyeXclr) was imposed on predictor, and posteriors are shown as offsets from the overall mean ($\beta_0$).
 
-$$\vec{\mu_i} = \vec{\beta_0} + \vec(\beta_{pat,i}) + \vec(\beta_{eye,i}) + \vec(\beta_{clr,i}) + \vec(\beta_{eyeXclr,i})$$
+$$\vec{\mu_i} = \vec{\beta_0} + \vec{\beta_{pat,i}} + \vec{\beta_{eye,i}} + \vec{\beta_{clr,i}} + \vec{\beta_{eyeXclr,i}}$$
 $$\beta_k \sim Normal(0, \sigma_k)$$  
 $$\sigma_k \sim Normal(0,10), for k=pat,eye,clr,exeXclr $$
 
 As “peak” is not defined for mela1 and mela2, correlation coefficients were estimated by marginalizing the observed components. The correlation coefficients $\Omega$ were estimated using Cholesky factorization and LKJ(2) prior.
-$$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec(\delta)), (\vec{\sigma} = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
+$$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec{\delta}), (\vec{\sigma} = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
 $$\Omega_{clr} = L_{clr} L_{clr}'$$
 $$L_{clr} \sim LKJ(2)$$
 
@@ -54,15 +54,15 @@ For the degrees of freedom ν we used the $Gamma(2,0.1)$ prior recommended by th
 
 Association between features (sex, age, EPT, logMAR, Retina thickness, FST and chromatic pupillometry measurements) was examined with a Bayesian counterpart of Pearson’s correlation test by estimating the correlation coefficient of a multivariate distribution. We implemented our model with a multivariate t-distribution, instead of a multi normal distribution for robustness against outliers. A latent state was assumed to take into account the uncertainty for measurements where mean and standard deviation were available (retina thickness, FST, and chromatic pupillometry). For FST and chromatic pupillometry data, the posterior estimates (mean and standard deviation) of the respective analyses were used as data. For missing data, i.e. missing components of the multivariate outcome, we modeled the marginal distribution of the component that is observed. Finally, for EPT measurements data contained censored values (right-censored at 2.5mA). These measurements were incorporated as parameters constrained to values in the censored range (>2.5mA). 
 
-$$\vec(x_i) \sim t_{nu}(\vec(\mu), \Sigma) $$
-$$\Sigma = diag(\vec(\delta)) \times \Omega \times diag(\vec(\delta))$$
+$$\vec{x_i} \sim t_{nu}(\vec{\mu}, \Sigma) $$
+$$\Sigma = diag(\vec{\delta}) \times \Omega \times diag(\vec{\delta})$$
 $$\Omega = LL'$$
 $$L \sim LKJ(2)$$
 
 We also performed a second correlation analysis similar to the above, but conditioning the correlation coefficients on visual acuity was performe to further explore the association between FST and retinal thickness. We separated patients by visual acuity into four categories: CF (logMAR < 2.9), HM (logMar < 3.1), LP(logMAR < 3.4), and NLP (logMAR ≥ 3.4), and estimated correlation coefficients within each group. 
 
-$$\vec(x_i) \sim t_{nu}(\vec(\mu), \Sigma_{VA}) $$
-$$\Sigma_{VA} = diag(\vec(\delta)) \times \Omega_{VA} \times diag(\vec(\delta))
+$$\vec{x_i} \sim t_{nu}(\vec{\mu}, \Sigma_{VA}) $$
+$$\Sigma_{VA} = diag(\vec{\delta}) \times \Omega_{VA} \times diag(\vec{\delta})
 $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
 ## Quadratic Regression
