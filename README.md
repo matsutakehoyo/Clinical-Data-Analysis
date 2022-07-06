@@ -39,12 +39,12 @@ $$[x_{beore,i},x_{peak,i},x_{after,i} ] = t_{\nu} (μ_{before,i},μ_{peak,i},μ_
 
 Patient, eye, and color were considered as predictors, as well as the interaction between eye and color, with broad hyperpriors. A sum-to-zero constraint ($\Sigma\beta=0$,for pat,eye,clr,eyeXclr) was imposed on predictor, and posteriors are shown as offsets from the overall mean ($\beta_0$).
 
-$$\vec(\mu_i) = \vec(\beta_0) + \vec(\beta_{pat,i}) + \vec(\beta_{eye,i}) + \vec(\beta_{clr,i}) + \vec(\beta_{eyeXclr,i})$$
+$$\vec{\mu_i} = \vec{\beta_0} + \vec(\beta_{pat,i}) + \vec(\beta_{eye,i}) + \vec(\beta_{clr,i}) + \vec(\beta_{eyeXclr,i})$$
 $$\beta_k \sim Normal(0, \sigma_k)$$  
 $$\sigma_k \sim Normal(0,10), for k=pat,eye,clr,exeXclr $$
 
 As “peak” is not defined for mela1 and mela2, correlation coefficients were estimated by marginalizing the observed components. The correlation coefficients $\Omega$ were estimated using Cholesky factorization and LKJ(2) prior.
-$$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec(\delta)), (\vec(\simga = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
+$$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec(\delta)), (\vec{\sigma} = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
 $$\Omega_{clr} = L_{clr} L_{clr}'$$
 $$L_{clr} \sim LKJ(2)$$
 
