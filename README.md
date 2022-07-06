@@ -44,7 +44,7 @@ $$\beta_k \sim Normal(0, \sigma_k)$$
 $$\sigma_k \sim Normal(0,10), for k=pat,eye,clr,exeXclr $$
 
 As “peak” is not defined for mela1 and mela2, correlation coefficients were estimated by marginalizing the observed components. The correlation coefficients $\Omega$ were estimated using Cholesky factorization and LKJ(2) prior.
-$$\Sigma_{clr} = diag(\vec(\delta)) \tiems \Omega_{clr} \times diag(\vec(\delta)), (\vec(\simga = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
+$$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec(\delta)), (\vec(\simga = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
 $$\Omega_{clr} = L_{clr} L_{clr}'$$
 $$L_{clr} \sim LKJ(2)$$
 
