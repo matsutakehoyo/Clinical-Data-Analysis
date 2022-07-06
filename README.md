@@ -55,7 +55,7 @@ For the degrees of freedom ν we used the $Gamma(2,0.1)$ prior recommended by th
 Association between features (sex, age, EPT, logMAR, Retina thickness, FST and chromatic pupillometry measurements) was examined with a Bayesian counterpart of Pearson’s correlation test by estimating the correlation coefficient of a multivariate distribution. We implemented our model with a multivariate t-distribution, instead of a multi normal distribution for robustness against outliers. A latent state was assumed to take into account the uncertainty for measurements where mean and standard deviation were available (retina thickness, FST, and chromatic pupillometry). For FST and chromatic pupillometry data, the posterior estimates (mean and standard deviation) of the respective analyses were used as data. For missing data, i.e. missing components of the multivariate outcome, we modeled the marginal distribution of the component that is observed. Finally, for EPT measurements data contained censored values (right-censored at 2.5mA). These measurements were incorporated as parameters constrained to values in the censored range (>2.5mA). 
 
 $$\vec(x_i) \sim t_{nu}(\vec(\mu), \Sigma) $$
-$$\Sigma = diag(\vec(\delta)) \tiems \Omega \times diag(\vec(\delta))
+$$\Sigma = diag(\vec(\delta)) \tiems \Omega \times diag(\vec(\delta))$$
 $$\Omega = LL'$$
 $$L \sim LKJ(2)$$
 
