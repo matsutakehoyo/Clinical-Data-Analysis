@@ -65,3 +65,5 @@ $$\vec(x_i) \sim t_{nu}(\vec(\mu), \Sigma_{VA}) $$
 $$\Sigma_{VA} = diag(\vec(\delta)) \tiems \Omega_{VA} \times diag(\vec(\delta))
 $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
+##
+
