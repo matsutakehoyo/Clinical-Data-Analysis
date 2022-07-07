@@ -74,6 +74,7 @@ $$  x \sim Normal(x_{lat}, \sigma_x) $$
 Where $x$ and $\sigma_x$ are the mean and standard deviation of the posterior predictie distribution of the Blue FST value, and $x_lat$ is a latant variable. Thus the FST values for Green, White, and Red measurements ($y_i$) are given by the coefficients for the quadratic regression ($b_{0,clr}$, $b_{1,clr}$, and $b_{2,clr}$.
 
 $$ \mu_i = b_{0,clr} + b_{1,clr} * x_{lat,i} + b_{2,clr} * (x_{lat,i})^2 $$
+
 $$ y_i \sim Normal(\mu_i, \sigma_{clr}) $$
 
 
