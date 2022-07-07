@@ -4,7 +4,7 @@ The repository contains details and Stan programs for the analysis of clinical d
 
 ## Analysis of FST
 
-FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $　y_i　$ with success = 1 or fail = 0, can be modeled with a Bernoulli distribution with probability to answer correctly $　\theta_i$. 
+FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $　y_i　$ with success = 1 or fail = 0, can be modeled with a Bernoulli distribution with probability to answer correctly $　\theta_i　$. 
 
 $$y_i \sim Bernoulli(\theta_i)$$
 
