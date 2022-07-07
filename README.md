@@ -24,8 +24,10 @@ For $\beta_{pat}$, $\beta_{eye}$, $\beta_{eyeXclr}$ we used full Bayesian infere
 
 $$\begin{eqnarray}
 \beta \sim & Normal(0, \sigma_k) \\
-\sigma_k \sim & Gamma(1.64, 0.32), for k = pat, eye, eyeXclr \\
+\sigma_k \sim & Gamma(1.64, 0.32) \\
 \end{eqnarray}$$
+
+for $k$ = $pat$, $eye$, $eyeXclr$.
 
 As there are only four colors, we used an informative half-t prior for the effect of color 
 
