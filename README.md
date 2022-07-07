@@ -81,5 +81,5 @@ $$ b_0 \sim Normal(0,100) $$
 $$ b_1 \sim Normal(0,100) $$
 $$ b_2 \sim Normal(0,10) $$
 $$ \sigma ~ Normal(0,100) $$  
-$$ \x_{lat} ~ Normal(0, 50) $$
+$$ x_{lat} ~ Normal(0, 50) $$
 
