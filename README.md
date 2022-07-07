@@ -4,7 +4,7 @@ The repository contains details and Stan programs for the analysis of clinical d
 
 ## Analysis of FST
 
-FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $　y_i　$ with success = 1 or fail = 0, can be modeled with a Bernoulli distribution with probability to answer correctly $　\theta_i　$. 
+FST measurements consist subjective responses at various light intensities for different light colors. The stimulus may or may not be present, so that responses may be positive, negative, false negative, or false positive. We converted these responses to a dichotomous outcome (success or fail) depending on whether participants responded correctly. The outcome of the i-th trial $y_i$, with success = 1 or fail = 0, can be modeled with a Bernoulli distribution with probability to answer correctly $　\theta_i　$. 
 
 $$y_i \sim Bernoulli(\theta_i)$$
 
@@ -67,11 +67,16 @@ $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
 ## Quadratic Regression
 
-A regression analysis was performed to investigate the relationship between FST values (for example Blue vs Red). While FST values exhibit an overall linear trend, the Blue and Red FST values could not be satisfactorily accomodated with a linear relationship, as red values deviated more at lower thresholds. We therefore use a quadratic regression model. This is also more physiologically consistent as we expect Blue FST to be smaller than Blue. We use the mean and sd of the threshold values calculated from the FST analysis.
+A regression analysis was performed to investigate the relationship between FST values (for example Blue vs Red). While FST values exhibit an overall linear trend, the Blue and Red FST values could not be satisfactorily accomodated with a linear relationship, as red values deviated more at lower thresholds. We therefore used a quadratic regression model. This is results in a curve in which Blue FST values never exceed Red FST values which is more physiologically consistent. The predictive posterior distribution of the theshold value (value at which probaility = 0.1) for each eyes' measurement were used. We attempted to implement a mesurement error model, which takes into acount both incertainty in $x$ (Blue FST) and $y$ (White, Green, Red FST) values, however mcmc sampling did not converge. We therefor implemented the measurement error only for $x$ (Blue FST values), assuming a latent state $x_{lat}$. 
 
-Measurement error model using the posterior distributions from the FST analysis.
+$$  x ~ Normal(x_lat, x_sd) $$
+
+Where $x$ and $x_sd$ are the mean and standard deviation of the posterior predictie distribution of the Blue FST value. Thus the FST values for Green, White, and Red measurements ($y_i$) are given by the coefficients for the quadratic regression. 
+
 $$ \mu_i = b_{0,clr} + b_{1,clr} * x_{lat,i} + b_{2,clr} * (x_{lat,i})^2; $$
 $$ y_i \sim Normal(\mu_i, \sigma_{clr}) $$
+
+We used the following weakly informative priors. 
 $$ b_0 \sim Normal(0,100) $$
 $$ b_1 \sim Normal(0,100) $$
 $$ b_2 \sim Normal(0,10) $$
