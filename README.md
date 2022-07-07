@@ -22,10 +22,10 @@ $$\mu_i=\beta_0+\beta_{pat,i}+\beta_{eye,i}+\beta_{clr,i}+\beta_{eyeXclr,i}+\bet
 
 For $\beta_{pat}$, $\beta_{eye}$, $\beta_{eyeXclr}$ we used full Bayesian inference with a $Gamma(1.64,0.32)$ for hyperpriors which has a mean of 2 and standard deviation of 4, covering all likely values in log odds scale.
 
-$$
+$$\begin{eqnarray}
 \beta \sim Normal(0, \sigma_k) \\
 \sigma_k \sim Gamma(1.64, 0.32), for k = pat, eye, eyeXclr \\
-$$
+\end{eqnarray}$$
 
 As there are only four colors, we used an informative half-t prior for the effect of color 
 
