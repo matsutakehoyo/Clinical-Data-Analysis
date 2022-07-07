@@ -31,7 +31,7 @@ for $k$ = $pat$, $eye$, $eyeXclr$.
 
 As there are only four colors, we used an informative half-t prior for the effect of color 
 
-$$\beta_{clr}~Student(3,0,1)
+$$\beta_{clr}~Student(3,0,1)$$
 
 ## Analysis of chromatic pupillometry
 
