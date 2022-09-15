@@ -16,7 +16,7 @@ For the ‘guessing’ parameter α we used a broad prior which gives values ove
 
 $$α_{eye} \sim Beta(1,9)$$
 
-For the logistic regression, we used light intensity ( $x_i$ ), patient ($\beta_{pat}$), eye ($\beta_{eye}$), and light color ($\beta_{clr}$) as predictors. Since we were interested in characteristic responses to particular combinations of eye and light color, we included an interactions term between eye and light color ($\beta_{eyeXclr}$). This allowed us to estimate the overall trends for patient, eye, color, taking into account the hierarchical structure of the data. A sum-to-zero constraint ($\Sigma\beta_k=0$,for $k=pat,eye,clr,eyeXclr$) was imposed on these predictors, and posteriors shown as offsets from the overall mean ($\beta_0).
+For the logistic regression, we used light intensity ( $x_i$ ), patient ($\beta_{pat}$), eye ( $\beta_{eye}$ ), and light color ( $\beta_{clr}$) as predictors. Since we were interested in characteristic responses to particular combinations of eye and light color, we included an interactions term between eye and light color ($\beta_{eyeXclr}$). This allowed us to estimate the overall trends for patient, eye, color, taking into account the hierarchical structure of the data. A sum-to-zero constraint ($\Sigma\beta_k=0$,for $k=pat,eye,clr,eyeXclr$) was imposed on these predictors, and posteriors shown as offsets from the overall mean ($\beta_0).
 
 $$\mu_i=\beta_0+\beta_{pat,i}+\beta_{eye,i}+\beta_{clr,i}+\beta_{eyeXclr,i}+\beta x_i$$
 
