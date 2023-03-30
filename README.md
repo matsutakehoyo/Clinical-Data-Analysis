@@ -76,6 +76,9 @@ $$\Sigma_{VA} = diag(\vec{\delta}) \times \Omega_{VA} \times diag(\vec{\delta}) 
 
 $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
+$$L_{VA} \sim LKJ(2)$$
+
+
 ## Quadratic Regression
 
 A regression analysis was performed to investigate the relationship between FST values (for example Blue vs Red). As Blue FST values generally exhibited the lowes threshold values, we used Blue as a reference, and compared how Green, White, and Red FST values deviate from the Blue values. While FST values exhibit an overall linear trend, the Blue and Red FST values could not be satisfactorily approximated  with a line, as Red values deviated more from Blue values at lower thresholds, and linear regression resluted in physiologically unrealistic values at high threhold regions (i.e. Red FST value much lower than Blue values at high thresholds ~40dB). We therefore used a quadratic regression model. This results in a curve in which Blue FST values never exceed Red FST values which is more physiologically consistent. The predictive posterior distribution of the theshold value (value at which probaility = 0.5) from the FST analysis were used as inputs and outputs for the regression. We attempted to implement a mesurement error model, which takes into acount both unncertainty in inputs $x$ (Blue FST) and outputs $y$ (White, Green, Red FST) values, however mcmc sampling did not converge when both measurement errors were presnt. We therefor implemented the measurement error only for $x$ (Blue FST values), assuming a latent state $x_{lat}$. 
