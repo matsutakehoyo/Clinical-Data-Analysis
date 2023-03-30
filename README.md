@@ -84,7 +84,7 @@ We used the following informative priors which are vague on the scale of the dat
 
 $$ b_0 \sim Normal(0,100) $$
 $$ b_1 \sim Normal(0,100) $$
-$$ b_0 \sim Normal(0,10) $$
+$$ b_2 \sim Normal(0,10) $$
 $$ \sigma_{clr} \sim Normal(0,100) $$
 
 
