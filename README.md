@@ -45,7 +45,7 @@ $$\vec{\mu_i} = \vec{\beta_0} + \vec{\beta_{pat,i}} + \vec{\beta_{eye,i}} + \vec
 
 $$\beta_k \sim Normal(0, \sigma_k)$$  
 
-$$\sigma_k \sim Normal(0,10), for k=pat,eye,clr,exeXclr $$
+$$\sigma_k \sim Normal(0,10), k=pat,eye,clr,exeXclr $$
 
 As “peak” is not defined for mela1 and mela2, correlation coefficients were estimated by marginalizing the observed components. The correlation coefficients $\Omega$ were estimated using Cholesky factorization and LKJ(2) prior.
 $$\Sigma_{clr} = diag(\vec{\delta}) \times \Omega_{clr} \times diag(\vec{\delta}), (\vec{\sigma} = [\sigma_{before}, \sigma_{peak}, \sigma_{after}]))$$
@@ -72,7 +72,7 @@ We also performed a second correlation analysis similar to the above, but condit
 
 $$\vec{x_i} \sim t_{nu}(\vec{\mu}, \Sigma_{VA}) $$
 
-$$\Sigma_{VA} = diag(\vec{\delta}) \times \Omega_{VA} \times diag(\vec{\delta})
+$$\Sigma_{VA} = diag(\vec{\delta}) \times \Omega_{VA} \times diag(\vec{\delta}) $$
 
 $$\Omega_{VA} = L_{VA}L_{VA}'$$
 
