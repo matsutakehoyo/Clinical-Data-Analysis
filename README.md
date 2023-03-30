@@ -87,6 +87,7 @@ $$ b_1 \sim Normal(0,100) $$
 $$ b_2 \sim Normal(0,10) $$
 $$ \sigma_{clr} \sim Normal(0,100) $$
 
+.
 
 
 
